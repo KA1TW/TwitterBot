@@ -2,11 +2,11 @@
   "type": "service_account",
   "project_id": "tweetbot-275123",
   "private_key_id": "207e9d19271736f279d6b879fdc019f908d293a7",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwgg$
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC3RvYdct+azIqH\ncmoPcywhbfYeqE8jncgFQG2onfchQ1aobXsry9Mq17t5XSJmMElH/do3nHx/SZwA\nGScBmlEcHkhiXwKouMRxKmVnHVMaPf83BIms0BZ/GAvIEOJ8jbFt/U+sc/ZckryI\n1KMrMr2jK9q76/Z5Db4w5kAVc4L4Sc8VF0OuYULZB2hdhMvXy7vPn1y1VUnNeM+M\nCLdsH9tWyTv3I5twIyTJfwk0VAG1BsONSSRX7vIqmhu7y2ze9N9tdShQHncu7iz+\naog11jjXxCLIYy7LgWunqCD5R1a2xumfzzOaeffb7mXHk7zbCIhfAEHcL1rtINLB\n4AgEdy97AgMBAAECggEAIBONU44dUGxn+lit81JG8PrbznXKlAMzVKf4CUDMVcgB\nTK0Ml5eut5rWNuFz+cqNqMnm/UCoEWcCpInCZ+doNrGeHYlfX8QmrV+sK6XYO4mK\nN0jWB6bLqSa+OR+rY/0whn2FCjupbH5J/PCqNg9FXV95gtZDZuBe3xQNNzPmQins\n1AzytfUDn5MQHMaG6GHyvfpjgkCaDhml+yftGdjT3hd9Rt/CrJOvqSZ6ZisCOQta\nMD4U8EOq7BTsFDEAM+78dDenD+ILblComhK6Y5rJE7R1/jQHj7u+X2Qnq2eD3GAu\nPfwORuUZcXZWrE/fnLPLyAcdPGKAOFVxwAstrtW6gQKBgQDnudUeup2mHU+J9Aru\nT2QqTeJo6BB4uQuMii3hEKx+cVlBVi5NFahdhErrAexEKMWXihkwegj8KOvDsBFY\noRWxsXfBVJAqJhYm/brd2hguSkUtg0lrT9kvh1WAWKbqafSv42B4q3Di6vH34SmH\nQLJk4y31OLD2k077Dzak8oBg2wKBgQDKeeKaBJlN+nbWg8DvuZOlU+oA9K6OxsNS\nhfxmRpsvvxuJpDGT5GdPk6E5RyFtMqzbOfPMcYxBoRZkV1Hifm/MN7l6okE54HG8\npVOn5VXuBJnWRrUFPYlMWWc6A5uS6iAPjJ5PBaLlvwpxUpsLleLIYY3ircQxT492\nteZHkp/d4QKBgCRmrdLo79Djc9Yw7vKmqA55M6LVKZk9QFIwdqqPSvmF5sZ7ukRD\nrbIbEQW/xJSkbv2yJOjXksfByd9wrhjlHRpPzYciOI9Wck5nt04Yb4n+AsX2hLcF\n0RFFSioiQv457MUgi8wI6m/LBn2w8iwb/qoYgeSupiXl2BdaOXRJ397XAoGBAMeF\nxmPppjxuVQ7cdJKGt9TSVSSt+RmfCjjW6brLVv98/iDrmSNYjume29/6lRjrN+Us\nPW+4cPL3T35/gaSE3ZxLSU5sd4QWBV5VOJOZbc0H4aSCtr08P4DqFMvZZEQozIEm\nG5ZZQoXNdPfo4/pNsFWvtEas30mMUh4z74GWHk1hAoGBAOOhpDn+e3ME7MSuBInt\nY5jI9ZmeH1n5ZOOjUxx7Ebu9wmsKqIKyClSZ5lNLJMVVY/mFU9Mm3wKE5xRFTgHr\nsSOzvLB8wW/6Nr9fp8/ag5NmD28Iybrdk6RCYoBXR9P/Mdx2+G1m+rDjUO3Hyxs6\nI7Xbv53yVHMDQYBwVFd/MH/U\n-----END PRIVATE KEY-----\n",
   "client_email": "twitterbot@tweetbot-275123.iam.gserviceaccount.com",
   "client_id": "116659661312497597270",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/twitterb$
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/twitterbot%40tweetbot-275123.iam.gserviceaccount.com"
 }
