@@ -1,0 +1,103 @@
+#  program to retrieve a random string message from a google sheet database with
+#  provision to ensure the message will not repeat over a period of 7 days
+#  04292020 - Mr. Barron - FHS Computer Club Faculty Advisor
+# -----------------------------------------------------------------------
+#                   L I B R A R I E S
+#
+import gspread  ## access the gspread lib to interface with google sheets
+import random  ## access random lib to use random integer method
+from google.oauth2.service_account import Credentials   ## access credentials method
+#
+# -----------------------------------------------------------------------
+#                   I N I T   V A R I A B L E S
+#
+recent_tweet_nums = []   # initialize to empty list program will append message numbers that are used by the bot
+tweet_list = [] # initialize to empty list.  program will read spreadsheet and populate list prior to daily tweet
+#
+# -----------------------------------------------------------------------
+#                   F U N C T I O N S
+# 
+def get_tweet_list(tweet_list):
+    scopes = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+    # *** EDIT THE PATH TO THE JSON FILE!
+    credentials = Credentials.from_service_account_file('C:/Users/ka1tw/Documents/TweetBot-207e9d192717.json', scopes=scopes)
+    gc = gspread.authorize(credentials) ## this authorizes the program to access the sheet
+    wks = gc.open("Twitter_Bot").sheet1  ## this is the spread sheet to access
+    #
+    tweet_list = wks.col_values(2)  ## this gets the entire 2nd column data and stuffs it into a list
+    tweet_list.pop(0)  # remove the column heading
+    recent_tweet_nums = wks.col_values(6)  # read in column F that contains the 7 most recently tweeted message numbers
+    recent_tweet_nums.pop(0) # remove the column heading
+    #
+    length = len(recent_tweet_nums)
+    for i in range(length):
+        recent_tweet_nums[i]=int(recent_tweet_nums[i])
+    # recent_tweet_nums is now a LIST of ints with a length of 7
+    print("Recently tweeted message ID's: ",recent_tweet_nums)
+    #
+    print("There are " ,len(tweet_list) + 1 , " entries in the twitter bot message database")  # add 1 since index starts at 0
+    return(tweet_list, recent_tweet_nums, wks)
+#
+#
+#  run this function to get the message that will be tweeted
+def get_todays_twitter_message(message_ID,tweet_list):
+    message_of_the_day = tweet_list[message_ID]  # simply index into the list of messages   python index begins with zero
+    return(message_of_the_day)
+#
+#
+# get a random number that has not been seen recently
+def get_non_recent_random_num(recent_tweet_nums):
+    recent = True  # init to true so while loop will run
+    while(recent):
+        possible_num = random.randint(0,len(tweet_list)-1) # get a random number between 0 and the number of messages -1 
+        recent = is_number_recent(possible_num, recent_tweet_nums, recent) # find out if its a recently used number
+        print("Trying random message number: " , possible_num," Number used recently: ",recent)
+    # exit while loop when we have a non-recent message number  
+    # append this number to the recents list
+    recent_tweet_nums = add_message_num_to_recent_list(possible_num,recent_tweet_nums)
+    # trim the recents list to 7 most recently used values ( Value of 7 establishes no repeats over 1 week)
+    recent_tweet_nums = trim_list(recent_tweet_nums)
+    # return the message number that will be used)
+    return(possible_num)
+#
+#
+# append the current message number to the list of recently used message numbers
+def add_message_num_to_recent_list(possible_num, recent_tweet_nums):
+    recent_tweet_nums.append(possible_num) # most recent numbers are rightmost in the list
+    return(recent_tweet_nums)
+#
+#
+# keep the list of recent numbers limited to the latest 7 numbers used
+def trim_list(recent_tweet_nums):
+    num_in_list = len(recent_tweet_nums)
+    if (num_in_list >= 7):
+        recent_tweet_nums.pop(0) # remove the oldest value from the list (oldest is leftmost, or index 0)
+    return(recent_tweet_nums)
+#
+#
+# determine if the random number selected has been used recently
+def is_number_recent(possible_number, recent_tweet_nums, recent):
+    if (recent_tweet_nums.count(possible_number) == 0):
+        recent = False
+    return(recent)
+#
+#
+# function to store the recent message ID list on spreadsheet cells F2 - F8
+def store_the_recents_list(recent_tweet_nums,wks):
+    length = len(recent_tweet_nums)
+    for i in range(length):
+        cell_to_update = "F"+str(i+2)  # concatenate F + number to create the specific cell number F2 through F8
+        wks.update(cell_to_update, recent_tweet_nums[i]) # cell F2 - F8 holds the 7 most recent message ID's
+#
+# -----------------------------------------------------------------------
+#                   M A I N   P R O G R A M
+#
+
+tweet_list, recent_tweet_nums, wks = get_tweet_list(tweet_list)
+message_number = get_non_recent_random_num(recent_tweet_nums)
+print("Message number being tweeted: ",message_number)
+store_the_recents_list(recent_tweet_nums, wks)
+message_to_tweet = get_todays_twitter_message(message_number, tweet_list)
+print("Message being Tweeted: ")
+print(message_to_tweet)
+
